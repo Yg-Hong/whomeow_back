@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Login Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("#kakao-sign-out").click(function() {
+                location.href = "/login/kakao-sign-out";
+            })
+
+            $("#sign-up").click(function() {
+                var form = {
+                    userEmail: $("#id").val(),
+                    userPassword: $("#password").val(),
+                    userName: $("#name").val()
+                };
+                $.ajax({
+                    url: "/login/sign-up",
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(form),
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function() {
+                        console.log("error");
+                    }
+                })
+            })
+            $("#sign-in").click(function() {
+                var form = {
+                    userEmail: $("#id").val(),
+                    userPassword: $("#password").val()
+                };
+                $.ajax({
+                    url: "/login/sign-in",
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(form),
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function() {
+                        console.log("error");
+                    }
+                })
+            })
+
+        })
+
+    </script>
+</head>
+<body>
+
+    <div>
+        아이디: <input id="id" name="id" type="text">
+    </div>
+    <div>
+        비밀번호: <input id="password" name="password" type="password">
+    </div>
+    <div>
+        이름 : <input id="name" name="name" type="text">
+    </div>
+    <button id="sign-in">로그인</button>
+    <button id="sign-up">회원가입</button>
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=a70d768f4dfd09f3776b422f274b6fa0&redirect_uri=http://localhost:8080/login/kakaoSignIn&response_type=code">
+        <button>카카오 로그인</button>
+    </a>
+    <button id="kakao-sign-out">카카오 로그아웃</button>
+<div>
+    * 아이디는 이메일 형태만 가능 <br>
+    * 비밀번호 Hint: 아이디 <br>
+</div>
+</body>
+</html>
