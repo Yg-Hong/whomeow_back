@@ -10,6 +10,7 @@ public class SignUpRequestDto {
     private String userEmail;
     private String userPassword;
     private String userName;
+    private String phoneNumber;
     private boolean policyAgreement;
     public User toEntity(){
         return User
@@ -17,6 +18,7 @@ public class SignUpRequestDto {
                 .userEmail(this.userEmail)
                 .userPassword(this.userPassword)
                 .userName(this.userName)
+                .phoneNumber(this.phoneNumber)
                 .build();
     }
 
@@ -26,6 +28,7 @@ public class SignUpRequestDto {
                 .userEmail(this.userEmail)
                 .userPassword(this.userPassword)
                 .userName(this.userName)
+                .phoneNumber(this.phoneNumber)
                 .build();
     }
 }

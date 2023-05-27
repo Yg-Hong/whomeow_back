@@ -2,18 +2,17 @@ package com.whomeow.whomeow.user;
 
 import com.whomeow.whomeow.exception.UserException;
 import com.whomeow.whomeow.session.SessionConst;
+import com.whomeow.whomeow.user.Dto.FindEmailRequestDto;
 import com.whomeow.whomeow.user.Dto.SignInRequestDto;
 import com.whomeow.whomeow.user.Dto.SignUpRequestDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.net.URI;
 import java.util.HashMap;
 
 @Slf4j
@@ -27,7 +26,7 @@ public class UserController {
     @PostMapping(value = "/sign-up", consumes = "application/json")
     @ResponseBody
     public String signUp(@RequestBody SignUpRequestDto signUpRequestDto, BindingResult bindingResult) {
-        String email = userService.signUp(signUpRequestDto);
+        User user = userService.signUp(signUpRequestDto);
         /*
         if() {
             bindingResult.reject("signUpFail", "E-mail 형태로 입력해주세요.");
@@ -42,7 +41,7 @@ public class UserController {
             return null;
         }
 
-        return email;
+        return user.getUserEmail();
     }
 
     @PostMapping(value="/sign-in")
@@ -110,4 +109,15 @@ public class UserController {
 
         return "main";
     }
+
+    @RequestMapping(value = "/findEmail")
+    public ModelAndView findEmail(FindEmailRequestDto findEmailRequestDto) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/findEmail");
+
+        String email = userService.findEmail(findEmailRequestDto);
+        mv.addObject("Email", email);
+        return mv;
+    }
+
 }

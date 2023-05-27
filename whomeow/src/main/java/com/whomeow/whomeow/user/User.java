@@ -22,6 +22,8 @@ public class User {
     private String userPassword;
     @Column(name = "USERNAME",nullable = false)
     private String userName;
+    @Column(name = "PHONENUMBER", nullable = false)
+    private String phoneNumber;
     @Column(name = "USERWITHDRAW",nullable = false)
     @ColumnDefault("0")
     private int userWithdraw;
@@ -31,10 +33,11 @@ public class User {
     private Date updateDate;
 
     @Builder
-    public User(String userPassword, String userName, String userEmail, Date createDate, Date updateDate, int userWithdraw){
+    public User(String userPassword, String userName, String userEmail, String phoneNumber, Date createDate, Date updateDate, int userWithdraw){
         this.userPassword = userPassword;
         this.userName = userName;
         this.userEmail = userEmail;
+        this.phoneNumber = phoneNumber;
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.userWithdraw = userWithdraw;

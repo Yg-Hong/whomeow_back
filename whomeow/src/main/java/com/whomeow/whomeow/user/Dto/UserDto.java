@@ -1,8 +1,13 @@
 package com.whomeow.whomeow.user.Dto;
 
 import com.whomeow.whomeow.user.User;
-import jakarta.validation.constraints.*;
-import lombok.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 
@@ -15,6 +20,8 @@ public class UserDto {
     @NotBlank
     @Email
     private String userEmail;
+    @NotBlank
+    private String phoneNumber;
     @NotBlank
     @Size(min = 1,max = 32)
     private String userPassword;
@@ -32,10 +39,11 @@ public class UserDto {
     }
 
     @Builder
-    public UserDto(String userEmail, String userPassword, String userName, int userWithdraw, Date createDate, Date updateDate) {
+    public UserDto(String userEmail, String userPassword, String userName, String phoneNumber, int userWithdraw, Date createDate, Date updateDate) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userName = userName;
+        this.phoneNumber = phoneNumber;
         this.userWithdraw = userWithdraw;
         this.createDate = createDate;
         this.updateDate = updateDate;
@@ -46,6 +54,7 @@ public class UserDto {
                 .userEmail(this.userEmail)
                 .userPassword(this.userPassword)
                 .userName(this.userName)
+                .phoneNumber(this.phoneNumber)
                 .userWithdraw(this.userWithdraw)
                 .createDate(this.createDate)
                 .updateDate(this.updateDate)

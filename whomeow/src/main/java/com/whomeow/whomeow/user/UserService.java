@@ -1,10 +1,10 @@
 package com.whomeow.whomeow.user;
 
 import com.whomeow.whomeow.exception.UserException;
+import com.whomeow.whomeow.user.Dto.FindEmailRequestDto;
 import com.whomeow.whomeow.user.Dto.SignInRequestDto;
 import com.whomeow.whomeow.user.Dto.SignUpRequestDto;
 import com.whomeow.whomeow.user.Dto.UserDto;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -42,12 +42,7 @@ public class UserService {
         return user;
     }
 
-    public String signOut(HttpSession session) {
-        session.invalidate();
-        return "/main";
-    }
-
-    public String signUp(SignUpRequestDto signUpRequestDto){
+    public User signUp(SignUpRequestDto signUpRequestDto){
         String userEmail = signUpRequestDto.getUserEmail();
         if (userJpaRepository.findByUserEmail(userEmail) == null) {
             UserDto userDto = UserDto
@@ -55,6 +50,7 @@ public class UserService {
                     .userEmail(signUpRequestDto.getUserEmail())
                     .userPassword(signUpRequestDto.getUserPassword())
                     .userName(signUpRequestDto.getUserName())
+                    .phoneNumber(signUpRequestDto.getPhoneNumber())
                     .build();
 
             Date now = new Date();
@@ -66,11 +62,15 @@ public class UserService {
             User user = userDto.toEntity();
             log.info("date : {}" , userDto.getCreateDate());
 
-            userJpaRepository.save(user);
-            return user.getUserEmail();
+            return userJpaRepository.save(user);
         }
         log.info("중복된 이메일 발견!");
         return null;
+    }
+
+    public String findEmail(FindEmailRequestDto findEmailRequestDto) {
+        return userJpaRepository.findEmailByNameAndPhoneNumber(findEmailRequestDto.getUserName(), findEmailRequestDto.getPhoneNumber());
+
     }
 
 }
