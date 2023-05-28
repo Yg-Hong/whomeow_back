@@ -110,14 +110,33 @@ public class UserController {
         return "main";
     }
 
-    @RequestMapping(value = "/findEmail")
+    @RequestMapping(value = "/account/findEmail")
     public ModelAndView findEmail(FindEmailRequestDto findEmailRequestDto) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/findEmail");
+        mv.setViewName("/account/findEmail");
 
         String email = userService.findEmail(findEmailRequestDto);
         mv.addObject("Email", email);
         return mv;
     }
 
+    @RequestMapping(value = "/account/sendMail")
+    public void sendApprovalKey(String userEmail) {
+        userService.sendMail(userEmail);
+    }
+
+    @RequestMapping(value = "/account/confirmKey")
+    public String confirmKey(String userEmail, String ApprovalKey){
+        if(userService.confirmKey(userEmail, ApprovalKey))
+            return "/account/resetPassword?userEmail=" + userEmail;
+        else {
+            return "redirect:/";
+        }
+    }
+
+    @RequestMapping(value = "/account/resetPassword")
+    public String resetPassword(String userEmail, String newPassword, String confirmPassword) {
+        userService.resetPassword(userEmail, newPassword, confirmPassword);
+        return "/main";
+    }
 }

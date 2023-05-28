@@ -21,7 +21,6 @@ class UserServiceTest {
 
 
     @Test
-    @DisplayName("회원가입 테스트")
     @Transactional
     void signUp() {
         SignUpRequestDto signUpRequestDto = new SignUpRequestDto();
@@ -36,7 +35,6 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("이메일 찾기")
     @Transactional
     void findEmail() {
         SignUpRequestDto signUpRequestDto = new SignUpRequestDto();
@@ -59,4 +57,45 @@ class UserServiceTest {
     }
 
 
+    @Test
+    void resetApprovalKey() {
+        String key1 = userService.resetApprovalKey();
+        String key2 = userService.resetApprovalKey();
+
+        System.out.println("key1 : " + key1);
+        System.out.println("key2 : " + key2);
+
+        Assertions.assertThat(key1).isNotEqualTo(key2);
+    }
+
+
+    @Test
+    @Transactional
+    void sendMail() {
+        SignUpRequestDto signUpRequestDto = new SignUpRequestDto();
+        signUpRequestDto.setUserName("김유민");
+        signUpRequestDto.setUserEmail("lion0077v@gmail.com");
+        signUpRequestDto.setUserPassword("1234");
+        signUpRequestDto.setPhoneNumber("010-0000-0000");
+
+        User user = userService.signUp(signUpRequestDto);
+
+        userService.sendMail("lion0077v@gmail.com");
+    }
+
+    @Test
+    @Transactional
+    void resetPassword() {
+        SignUpRequestDto signUpRequestDto = new SignUpRequestDto();
+        signUpRequestDto.setUserName("김유민");
+        signUpRequestDto.setUserEmail("lion0077v@gmail.com");
+        signUpRequestDto.setUserPassword("1234");
+        signUpRequestDto.setPhoneNumber("010-0000-0000");
+
+        User user = userService.signUp(signUpRequestDto);
+
+        String password = userService.resetPassword(user.getUserEmail(), "4321", "4321");
+
+        Assertions.assertThat(password).isEqualTo("4321");
+    }
 }

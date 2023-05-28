@@ -30,6 +30,7 @@ public class UserDto {
     private int userWithdraw;
     private Date createDate;
     private Date updateDate;
+    private String approvalKey;
 
     /**
      * 암호화된 userPassword
@@ -39,7 +40,7 @@ public class UserDto {
     }
 
     @Builder
-    public UserDto(String userEmail, String userPassword, String userName, String phoneNumber, int userWithdraw, Date createDate, Date updateDate) {
+    public UserDto(String userEmail, String userPassword, String userName, String phoneNumber, int userWithdraw, Date createDate, Date updateDate, String approvalKey) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userName = userName;
@@ -47,6 +48,7 @@ public class UserDto {
         this.userWithdraw = userWithdraw;
         this.createDate = createDate;
         this.updateDate = updateDate;
+        this.approvalKey = approvalKey;
     }
 
     public User toEntity() {
@@ -58,6 +60,7 @@ public class UserDto {
                 .userWithdraw(this.userWithdraw)
                 .createDate(this.createDate)
                 .updateDate(this.updateDate)
+                .approvalKey(this.approvalKey)
                 .build();
     }
 }

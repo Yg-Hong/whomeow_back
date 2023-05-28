@@ -1,5 +1,6 @@
 package com.whomeow.whomeow.user;
 
+import com.whomeow.whomeow.user.Dto.UserDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -31,9 +32,11 @@ public class User {
     private Date createDate;
     @Column(name = "UPDATEDATE",nullable = false)
     private Date updateDate;
+    @Column(name = "APPROVALKEY", nullable = false)
+    private String approvalKey;
 
     @Builder
-    public User(String userPassword, String userName, String userEmail, String phoneNumber, Date createDate, Date updateDate, int userWithdraw){
+    public User(String userPassword, String userName, String userEmail, String phoneNumber, Date createDate, Date updateDate, int userWithdraw, String approvalKey) {
         this.userPassword = userPassword;
         this.userName = userName;
         this.userEmail = userEmail;
@@ -41,5 +44,12 @@ public class User {
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.userWithdraw = userWithdraw;
+        this.approvalKey = approvalKey;
+    }
+
+    public String updatePassword(String newPassword) {
+        this.userPassword = newPassword;
+
+        return newPassword;
     }
 }
