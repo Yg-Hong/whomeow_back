@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/whomeow.iml" filepath="$PROJECT_DIR$/.idea/whomeow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/whomeow.main.iml" filepath="$PROJECT_DIR$/.idea/modules/whomeow.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/whomeow_back.whomeow.main.iml" filepath="$PROJECT_DIR$/.idea/modules/whomeow_back.whomeow.main.iml" />
     </modules>
   </component>
 </project>
