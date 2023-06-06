@@ -146,12 +146,13 @@ public class UserService {
     }
 
     @Transactional
-    public String resetPassword(String userEmail, String newPassword, String confirmPassword){
+    public boolean resetPassword(String userEmail, String newPassword, String confirmPassword){
         if(newPassword.equals(confirmPassword)){
             User user = userJpaRepository.findByUserEmail(userEmail);
-            return user.updatePassword(newPassword);
+            String password = user.updatePassword(newPassword);
+            return true;
         }
-        return null;
+        return false;
     }
 
 }
