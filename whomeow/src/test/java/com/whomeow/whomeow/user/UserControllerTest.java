@@ -49,7 +49,7 @@ class UserControllerTest {
         HttpSession session = req.getSession();
 
         try {
-            String s = userController.signIn(signInRequestDto, req, bindingResult);
+            userController.signIn(signInRequestDto, req, bindingResult);
 
             User user = (User) session.getAttribute(SessionConst.LOGIN_USER);
 
