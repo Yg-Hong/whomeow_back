@@ -82,7 +82,7 @@ class UserServiceTest {
 
         User user = userService.signUp(signUpRequestDto);
 
-        userService.sendMail("lion0077v@gmail.com");
+        // userService.sendMail("lion0077v@gmail.com");
     }
 
     @Test

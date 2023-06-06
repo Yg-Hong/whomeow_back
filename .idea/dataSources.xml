@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="whoyaong" uuid="b8314f9a-5d4b-4629-b961-8d2d772da953">
+    <data-source source="LOCAL" name="dbwho@db-who.c2dkfbc2qp0h.ap-northeast-2.rds.amazonaws.com" uuid="bbb4378c-4e65-41c7-9b5e-84e718e86dd1">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://db-who.c2dkfbc2qp0h.ap-northeast-2.rds.amazonaws.com:3306/dbwho</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
