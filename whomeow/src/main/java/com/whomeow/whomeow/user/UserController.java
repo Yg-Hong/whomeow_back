@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @Slf4j
-@RestController
+@Controller
 @RequestMapping("/login")
 @RequiredArgsConstructor
 public class UserController {

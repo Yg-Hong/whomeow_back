@@ -14,23 +14,24 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USERKEY")
     private Long userKey;
-    @Column(name = "USEREMAIL",nullable = false, unique = true)
+    @Column(name = "USEREMAIL", nullable = false, unique = true)
     private String userEmail;
-    @Column(name = "USERPASSWORD",nullable = false, length = 32)
+    @Column(name = "USERPASSWORD", nullable = false, length = 32)
     private String userPassword;
-    @Column(name = "USERNAME",nullable = false)
+    @Column(name = "USERNAME", nullable = false)
     private String userName;
     @Column(name = "PHONENUMBER", nullable = false)
     private String phoneNumber;
-    @Column(name = "USERWITHDRAW",nullable = false)
+    @Column(name = "USERWITHDRAW", nullable = false)
     @ColumnDefault("0")
     private int userWithdraw;
-    @Column(name = "CREATEDATE",nullable = false)
+    @Column(name = "CREATEDATE", nullable = false)
     private Date createDate;
-    @Column(name = "UPDATEDATE",nullable = false)
+    @Column(name = "UPDATEDATE", nullable = false)
     private Date updateDate;
     @Column(name = "APPROVALKEY", nullable = false)
     private String approvalKey;
