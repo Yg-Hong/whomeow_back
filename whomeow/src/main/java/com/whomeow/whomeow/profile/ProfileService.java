@@ -32,6 +32,7 @@ public class ProfileService {
         User user = userJpaRepository.findByUserEmail(userEmail);
 
         if (profileJpaRepository.findByUser(user).isEmpty()) {
+            dogDto.setUser(user);
             Dog save = profileJpaRepository.save(dogDto.toEntity());
             return save;
         } else {

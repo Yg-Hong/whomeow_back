@@ -152,7 +152,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/account/resetPassword")
-    public ResponseEntity<HashMap<String, String>> resetPassword(String userEmail, String newPassword, String confirmPassword) {
+    public ResponseEntity<HashMap<String, String>> resetPassword(@RequestParam("userEmail") String userEmail,
+                                                                 @RequestParam("newPassword") String newPassword,
+                                                                 @RequestParam("confirmPassword") String confirmPassword) {
         HashMap<String, String> map = new HashMap<>();
 
         if (userService.resetPassword(userEmail, newPassword, confirmPassword)) {
