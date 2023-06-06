@@ -1,7 +1,11 @@
 package com.whomeow.whomeow.user;
 
+import com.whomeow.whomeow.exception.UserException;
+import com.whomeow.whomeow.session.SessionConst;
 import com.whomeow.whomeow.user.Dto.FindEmailRequestDto;
+import com.whomeow.whomeow.user.Dto.SignInRequestDto;
 import com.whomeow.whomeow.user.Dto.SignUpRequestDto;
+import jakarta.servlet.http.HttpSession;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,8 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 class UserServiceTest {
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserJpaRepository userJpaRepository;
 
 
     @Test
@@ -97,5 +99,29 @@ class UserServiceTest {
         String password = userService.resetPassword(user.getUserEmail(), "4321", "4321");
 
         Assertions.assertThat(password).isEqualTo("4321");
+    }
+
+    @Test
+    @Transactional
+    void signIn() {
+        SignUpRequestDto signUpRequestDto = new SignUpRequestDto();
+        signUpRequestDto.setUserName("김유민");
+        signUpRequestDto.setUserEmail("user@naver.com");
+        signUpRequestDto.setUserPassword("1234");
+        signUpRequestDto.setPhoneNumber("010-0000-0000");
+
+        User signUpUser = userService.signUp(signUpRequestDto);
+
+        SignInRequestDto signInRequestDto = new SignInRequestDto();
+        signInRequestDto.setUserEmail("user@naver.com");
+        signInRequestDto.setUserPassword("1234");
+
+
+        try {
+            User signInUser = userService.signIn(signInRequestDto);
+            Assertions.assertThat(signUpUser.getUserKey()).isEqualTo(signInUser.getUserKey());
+        } catch (UserException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
