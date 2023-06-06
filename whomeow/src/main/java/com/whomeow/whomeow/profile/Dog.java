@@ -34,9 +34,9 @@ public class Dog {
     @JoinColumn(name = "USERKEY", nullable = false)
     private User user;
 
-    @Column(name = "CREATEDAT", nullable = false)
+    @Column(name = "CREATEDAT")
     private Date createdAt;
-    @Column(name = "UPDATEDAT", nullable = false)
+    @Column(name = "UPDATEDAT")
     private Date updatedAt;
 
     @Builder
