@@ -30,7 +30,7 @@ public class Dog {
     @Column(name = "DOGBREAD")
     private String dogBread;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "USERKEY", nullable = false)
     private User user;
 
