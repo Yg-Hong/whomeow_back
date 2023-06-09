@@ -141,12 +141,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/account/sendMail")
-    public void sendApprovalKey(String userEmail) {
+    public void sendApprovalKey(@RequestParam("userEmail") String userEmail) {
         userService.sendMail(userEmail);
     }
 
     @RequestMapping(value = "/account/confirmKey")
-    public ModelAndView confirmKey(String userEmail, String ApprovalKey) throws Exception{
+    public ModelAndView confirmKey(@RequestParam("userEmail") String userEmail,
+                                   @RequestParam("ApprovalKey")String ApprovalKey) throws Exception{
         ModelAndView view = new ModelAndView();
         if(userService.confirmKey(userEmail, ApprovalKey)) {
             view.setViewName("resetPassword");
