@@ -31,11 +31,42 @@ public class HomeController {
                 // 로그인 시점에 세션에 보관한 회원 객체를 찾는다.
                 session.getAttribute(SessionConst.LOGIN_USER);
         //세션에 회원 데이터가 없으면 home
-
         if(loginUser == null){
             return "main";
         }
-        model.addAttribute("member",loginUser);
-        return "loginHome"; //TODO api 엮어야 함.
+        model.addAttribute("member", loginUser);
+        return "loginHome";
+    }
+
+    @GetMapping("/profile")
+    public String profile(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession(false);
+
+        if(session == null){
+            return "main";
+        }
+
+        User loginUser = (User) session.getAttribute(SessionConst.LOGIN_USER);
+        if(loginUser == null){
+            return "main";
+        }
+
+        return "profile";
+    }
+
+    @GetMapping("/status")
+    public String status(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            return "main";
+        }
+
+        User loginUser = (User) session.getAttribute(SessionConst.LOGIN_USER);
+        if (loginUser == null) {
+            return "main";
+        }
+
+        return "status";
     }
 }
