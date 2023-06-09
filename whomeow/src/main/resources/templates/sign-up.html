@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../static/sign-up.css" rel="stylesheet" />
+</head>
+<body>
+<div>
+    <div class=section>
+        <div>이름<br>
+        <input type="text" name="name" id="name" value="name"></span></div>
+        </div>
+    <div class=section>
+        <div>이메일
+            <br>
+        <input type="text" name="email" id="email" value="email"></span></div>
+    </div>
+    <div class=section>
+        <div>비밀번호
+            <br>
+        <input type="text" name="password" id="password" value="password"></span></div>
+    </div>
+
+       <button style="border: 0; outline: 0;" onclick="onClickSignUp">가입신청</button>
+
+    </div>
+
+</body>
+<script>
+    var name = document.getElementById("name");
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    var policyAgreement = true;
+    function onClickSignUp(name,email,password,policyAgreement){
+        const res = await fetch('/sign-up',{
+        method:"POST",
+        headers:{
+         "Content-Type":"application/x-www-form-urlencoded",
+         },
+         body:JSON.stringify({userName:name,userEmail:email,userPassword:password,
+         policyAgreement:policyAgreement}),
+        }).then(console.log(res));
+    }
+
+</script>
+</html>
