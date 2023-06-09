@@ -12,6 +12,11 @@ import java.util.List;
 public interface BehaviorJpaRepository extends JpaRepository<Behavior, Long> {
     Behavior findByDog(Dog dog);
 
-    @Query(value = "SELECT * FROM behavior WHERE dogKey = ?3 AND createdat >= ?1 AND createdat <= ?2", nativeQuery = true)
+    @Query(value = "SELECT *" +
+            " FROM behavior" +
+            " WHERE dogKey = ?3" +
+            "    AND createdat >= ?1" +
+            "    AND createdat <= ?2",
+            nativeQuery = true)
     List<Behavior> findByDate(String startDate, String endDate, Long dogKey);
 }
