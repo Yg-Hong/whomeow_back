@@ -159,7 +159,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/account/resetPassword")
-    public ModelAndView resetPassword(String userEmail, String newPassword, String confirmPassword) throws Exception {
+    public ModelAndView resetPassword(@RequestParam("userEmail") String userEmail,
+                                      @RequestParam("newPassword") String newPassword,
+                                      @RequestParam("confirmPassword") String confirmPassword) throws Exception {
+
 
         if (userService.resetPassword(userEmail, newPassword, confirmPassword)) {
             ModelAndView view = new ModelAndView();
