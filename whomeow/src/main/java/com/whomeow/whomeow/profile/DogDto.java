@@ -22,23 +22,14 @@ public class DogDto {
 
     private String dogBread;
 
-    @NotBlank
-    private User user;
-
-    private Date createdAt;
-    private Date updatedAt;
-
     @Builder
-    public DogDto(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBread, User user, Date createdAt, Date updatedAt) {
+    public DogDto(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBread) {
         this.dogPhoto = dogPhoto;
         this.dogName = dogName;
         this.dogAge = dogAge;
         this.dogSex = dogSex;
         this.dogWeight = dogWeight;
         this.dogBread = dogBread;
-        this.user = user;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     Dog toEntity() {
@@ -49,9 +40,6 @@ public class DogDto {
                 .dogSex(dogSex)
                 .dogWeight(dogWeight)
                 .dogBread(dogBread)
-                .user(user)
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
     }
 

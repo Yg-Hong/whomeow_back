@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
@@ -24,21 +25,31 @@ public class ProfileService {
     }
 
     /**
-     * @param userEmail 세션에서 꺼내온 userEmail로 profile 생성 및 수정
+     * @param user 세션에서 꺼내온 user 로 profile 생성 및 수정
      * @return
      */
-    public Dog editProfile(String userEmail, DogDto dogDto) {
-
-        User user = userJpaRepository.findByUserEmail(userEmail);
+    public Dog editProfile(User user, DogDto dogDto) {
+        Date now = new Date();
 
         if (profileJpaRepository.findByUser(user).isEmpty()) {
-            dogDto.setUser(user);
+            Dog dog = Dog.builder()
+                    .dogPhoto(dogDto.getDogPhoto())
+                    .dogName(dogDto.getDogName())
+                    .dogAge(dogDto.getDogAge())
+                    .dogSex(dogDto.getDogSex())
+                    .dogWeight(dogDto.getDogWeight())
+                    .dogBread(dogDto.getDogBread())
+                    .user(user)
+                    .createdAt(now)
+                    .updatedAt(now)
+                    .build();
             Dog save = profileJpaRepository.save(dogDto.toEntity());
             return save;
         } else {
             Dog edit = profileJpaRepository.findByUser(user).get();
             edit.update(dogDto.getDogPhoto(), dogDto.getDogName(), dogDto.getDogAge(), dogDto.getDogSex(),
-                    dogDto.getDogWeight(), dogDto.getDogBread(), dogDto.getUser(), dogDto.getCreatedAt());
+                    dogDto.getDogWeight(), dogDto.getDogBread(), now);
+
             return edit;
         }
     }
