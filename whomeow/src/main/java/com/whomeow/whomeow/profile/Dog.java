@@ -55,16 +55,14 @@ public class Dog {
         this.updatedAt = updatedAt;
     }
 
-    public Dog update(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBread, User user, Date createdAt) {
+    public Dog update(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBread, Date updatedAt) {
         this.dogPhoto = dogPhoto;
         this.dogName = dogName;
         this.dogAge = dogAge;
         this.dogSex = dogSex;
         this.dogWeight = dogWeight;
         this.dogBread = dogBread;
-        this.user = user;
-        this.createdAt = createdAt;
-        this.updatedAt = new Date();
+        this.updatedAt = updatedAt;
 
         return this;
     }

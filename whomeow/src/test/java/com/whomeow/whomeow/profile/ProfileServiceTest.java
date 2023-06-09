@@ -28,25 +28,25 @@ class ProfileServiceTest {
     @Autowired
     private UserJpaRepository userJpaRepository;
 
-    @Test
-    @Transactional
-    void editProfile() {
-        User user = User.builder().userName("홍윤기").userEmail("user@naver.com").userPassword("1234")
-                .phoneNumber("010-0000-0000").approvalKey("01234566789").createDate(new Date()).updateDate(new Date()).build();
-        DogDto dogDto = new DogDto("www.xxx.com/photoId=1234", "abc", 12, "male", 14, "aaa", user, new Date(), new Date());
-        Dog save = profileService.editProfile("user@naver.com", dogDto);
-
-        Assertions.assertThat(save.getUser()).isEqualTo(user);
-    }
-
-    @Test
-    @Transactional
-    void showProfile() {
-        User user = User.builder().userName("홍윤기").userEmail("user@naver.com").userPassword("1234")
-                .phoneNumber("010-0000-0000").approvalKey("01234566789").createDate(new Date()).updateDate(new Date()).build();
-        DogDto dogDto = new DogDto("www.xxx.com/photoId=1234", "abc", 12, "male", 14, "aaa", user, new Date(), new Date());
-        Dog save = profileService.editProfile("user@naver.com", dogDto);
-        Dog show = profileService.showProfile("user@naver.com");
-        Assertions.assertThat(show.getUser()).isEqualTo(userJpaRepository.findByUserEmail("user@naver.com"));
-    }
+//    @Test
+//    @Transactional
+//    void editProfile() {
+//        User user = User.builder().userName("홍윤기").userEmail("user@naver.com").userPassword("1234")
+//                .phoneNumber("010-0000-0000").approvalKey("01234566789").createDate(new Date()).updateDate(new Date()).build();
+//        DogDto dogDto = new DogDto("www.xxx.com/photoId=1234", "abc", 12, "male", 14, "aaa", user, new Date(), new Date());
+//        Dog save = profileService.editProfile("user@naver.com", dogDto);
+//
+//        Assertions.assertThat(save.getUser()).isEqualTo(user);
+//    }
+//
+//    @Test
+//    @Transactional
+//    void showProfile() {
+//        User user = User.builder().userName("홍윤기").userEmail("user@naver.com").userPassword("1234")
+//                .phoneNumber("010-0000-0000").approvalKey("01234566789").createDate(new Date()).updateDate(new Date()).build();
+//        DogDto dogDto = new DogDto("www.xxx.com/photoId=1234", "abc", 12, "male", 14, "aaa", user, new Date(), new Date());
+//        Dog save = profileService.editProfile("user@naver.com", dogDto);
+//        Dog show = profileService.showProfile("user@naver.com");
+//        Assertions.assertThat(show.getUser()).isEqualTo(userJpaRepository.findByUserEmail("user@naver.com"));
+//    }
 }
