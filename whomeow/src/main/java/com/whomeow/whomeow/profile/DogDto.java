@@ -29,7 +29,7 @@ public class DogDto {
     private Date updatedAt;
 
     @Builder
-    DogDto(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBread, User user, Date createdAt, Date updatedAt) {
+    public DogDto(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBread, User user, Date createdAt, Date updatedAt) {
         this.dogPhoto = dogPhoto;
         this.dogName = dogName;
         this.dogAge = dogAge;

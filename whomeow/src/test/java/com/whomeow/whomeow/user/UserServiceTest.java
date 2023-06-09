@@ -96,9 +96,9 @@ class UserServiceTest {
 
         User user = userService.signUp(signUpRequestDto);
 
-        String password = userService.resetPassword(user.getUserEmail(), "4321", "4321");
+        boolean flag = userService.resetPassword(user.getUserEmail(), "4321", "4321");
 
-        Assertions.assertThat(password).isEqualTo("4321");
+        Assertions.assertThat(user.getUserPassword()).isEqualTo("4321");
     }
 
     @Test
