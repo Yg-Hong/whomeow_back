@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -30,8 +31,10 @@ public class User {
     @ColumnDefault("0")
     private int userWithdraw;
     @Column(name = "CREATEDATE", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
     @Column(name = "UPDATEDATE", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updateDate;
     @Column(name = "APPROVALKEY", nullable = false)
     private String approvalKey;
