@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -34,9 +35,11 @@ public class Dog {
     @JoinColumn(name = "USERKEY", nullable = false)
     private User user;
 
-    @Column(name = "CREATEDAT")
+    @Column(name = "CREATEDAT", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
-    @Column(name = "UPDATEDAT")
+    @Column(name = "UPDATEDAT", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
     @Builder
