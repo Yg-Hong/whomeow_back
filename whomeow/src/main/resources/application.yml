@@ -1,4 +1,11 @@
 spring:
+  devtools:
+    livereload:
+      enabled: true
+    thymeleaf:
+      cache: false
+    restart:
+      enabled: true
   datasource:
     url: jdbc:mysql://db-who.c2dkfbc2qp0h.ap-northeast-2.rds.amazonaws.com:3306/dbwho
     username: admin
@@ -9,7 +16,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     #    hibernate.hbm2ddl.auto: update
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
