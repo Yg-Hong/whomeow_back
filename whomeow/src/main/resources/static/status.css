@@ -1,0 +1,43 @@
+body{
+margin: 0;
+}
+
+span.block{
+margin-top:100px;
+}
+
+.wrapper{
+display:flex;
+align-content:flex-center;
+flex-direction: column;
+align-items: center;
+background: #FFFFFF;}
+
+.box1{
+display:flex;
+box-sizing: border-box;
+position: absolute;
+align-content:flex-center;
+flex-direction: row;
+align-items: center;
+width: 360px;
+height: 176px;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+
+background: #D9D9D9;
+border: 1px solid #000000;
+}
+
+.img_box{
+width: 160px;
+height: 144px;
+}
+
+.box2{
+
+position: absolute;
+top: 190px;
+}

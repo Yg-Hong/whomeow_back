@@ -1,14 +1,50 @@
+body{
+margin:0;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.logo{
+display:flex;
+flex-direction: column;
+position:absolute;
+margin-left:10px;
+top: 130px;
+border:
+}
+.wrapper{
+display:flex;
+align-content:flex-center;
+flex-direction: column;
+align-items: center;
+background: #FFFFFF;
+
+}
+.sign-up{
+margin-top: 20px;
+margin-left:20px;
+width:180px;
+background:#ED731B;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 5px;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+color: #FFFFFF;
+}
 .section{
-margin-left:56px;
+
 margin-top:331px;
 }
 
 button.sign-in{
-position: absolute;
+
 width: 240px;
 height: 40px;
-left: 58px;
-top: 476px;
+margin-top: 20px;
 background: #DF4629;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 5px;
@@ -20,11 +56,11 @@ line-height: 23px;
 color: #FFFFFF;
 }
 button.kakao-sign-in{
-position: absolute;
+
 width: 240px;
 height: 40px;
-left: 57px;
-top: 541px;
+
+margin-top: 30px;
 background: #FFF615;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 5px;

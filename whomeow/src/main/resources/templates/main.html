@@ -56,6 +56,14 @@
     </script>
 </head>
 <body>
+<div class="wrapper">
+    <div class="logo">
+        <img src="../static/images/logo.svg"/>
+
+        <button class="sign-up" ><a href="/sign-up"/>회원등록</a></button>
+
+    </div>
+
 <div class="section">
 ID<br>
     <input id="id" name="id" type="text">
@@ -64,11 +72,12 @@ ID<br>
     <br>
     <input id="password" name="password" type="password"></span>
 </div>
-        <button class="sign-in">로그인</button>
+        <button class="sign-in" id="sign-i">로그인</button>
 <!--    <button id="sign-up">회원가입</button>-->
     <a href="https://kauth.kakao.com/oauth/authorize?client_id=a70d768f4dfd09f3776b422f274b6fa0&redirect_uri=http://localhost:8080/login/kakaoSignIn&response_type=code">
         <button class="kakao-sign-in">카카오 로그인</button>
     </a>
+</div>
 <!--    <button id="kakao-sign-out">카카오 로그아웃</button>-->
 <!--<div>-->
 <!--    * 아이디는 이메일 형태만 가능 <br>-->
