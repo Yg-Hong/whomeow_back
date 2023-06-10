@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="../static/status.css" rel="stylesheet"/>
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper">
+<div class="box1">
+    <div class="img_box">
+        <img src="./dog.jpg"/>
+        <button class="profile_edit"><a href="./profile">프로필편집</a></button>
+    </div>
+    <div class="text_box">
+    <span class="block">
+        이름 : <span th:text="${name}"></span>
+    </span>
+    </br>
+    <span class="block">
+        나이/성별 : <span th:text="${age}"></span> <span th:text="${sex}"></span>
+    </span>
+    </br>
+    <span class="block">
+        체중 : <span th:text="${weight}"></span>
+    </span>
+    </br>
+    <span class="block">
+        견종 : <span th:text="${breed}"></span>
+    </span>
+    </div>
+</div>
+
+<canvas style="z-index:1; margin-top: 200px;" id="doughnut-chart" width="320" height="48"></canvas>
+
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script th:inline="javascript">
+  /*<![CDATA[*/
+
+
+ const myChart = new Chart(document.getElementById("doughnut-chart"), {
+    type: 'doughnut',
+    data: {
+      labels: ["Feetup", "Turn", "Scratch"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+          data: [2478,5267,734]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: '우리집 반려견 이상행동지수'
+      }
+    }
+});
+
+
+        // 그냥 마치, 딕셔너리 리스트의 자료구조인 것처럼 접근해서 값을 변경해줘도 문제없습니다.
+        myChart.update();
+        var frame_duration = 1000;
+        var i=0;
+        d3.interval(
+            function(){
+                if (i > 10) {
+                    this.stop();
+                }
+                else {
+                    myChart.data.datasets[0].data = [1 + i, 2 + i, 3 + i];
+                    myChart.update(); // 데이터를 바꾼 다음, 이렇게 업데이트를 해야 적용된다.
+                }
+                i=i+1;
+            },
+            frame_duration
+        );
+
+/*]]>*/
+</script>
+</html>
