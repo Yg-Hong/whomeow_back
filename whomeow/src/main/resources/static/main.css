@@ -11,7 +11,7 @@ display:flex;
 flex-direction: column;
 position:absolute;
 margin-left:10px;
-top: 130px;
+margin-top:40px;
 border:
 }
 .wrapper{
@@ -23,7 +23,9 @@ background: #FFFFFF;
 border-style: solid;
 border-width: 3px;
 padding:30px;
-height:640px;
+width:320px;
+margin-left:600px;
+
 
 
 }

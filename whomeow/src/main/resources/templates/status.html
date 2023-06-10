@@ -9,8 +9,8 @@
 <div class="wrapper">
 <div class="box1">
     <div class="img_box">
-        <img src="./dog.jpg"/>
-        <button class="profile_edit"><a href="/showProfile">프로필편집</a></button>
+        <img th:src="@{/images/dog.jpg}"/>
+        <button class="profile_edit"><a href="/profile/showProfile">프로필편집</a></button>
     </div>
     <div class="text_box">
     <span class="block">
@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<canvas style="z-index:1;margin-top: 200px;" id="doughnut-chart" width="320" height="48"></canvas>
+<canvas style="z-index:1;margin-top: 200px;" id="doughnut-chart" width="160" height="72"></canvas>
 
 </div>
 
