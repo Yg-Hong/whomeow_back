@@ -6,41 +6,63 @@
     <link href="../static/sign-up.css" rel="stylesheet" />
 </head>
 <body>
-<div>
-    <div class=section>
+<div class="wrapper">
+    <div class="section">
         <div>이름<br>
-        <input type="text" name="name" id="name" value="name"></span></div>
+        <input type="text" name="name" id="name" placeholder="name"></span></div>
         </div>
     <div class=section>
         <div>이메일
             <br>
-        <input type="text" name="email" id="email" value="email"></span></div>
+        <input type="text" name="email" id="email" placeholder="email"></span></div>
     </div>
     <div class=section>
         <div>비밀번호
             <br>
-        <input type="text" name="password" id="password" value="password"></span></div>
+        <input type="text" name="password" id="password" placeholder="password"></span></div>
     </div>
-
-       <button style="border: 0; outline: 0;" onclick="onClickSignUp">가입신청</button>
+<!--    <div class=section>-->
+<!--        <div>휴대폰번호-->
+<!--            <br>-->
+<!--            <input type="text" name="phoneNumber" id="phoneNumber" placeholder="010-xxxx-xxxx"></span></div>-->
+<!--    </div>-->
+        <div class="btn_box">
+       <button class="signupBtn" style="border: 0; outline: 0;" onclick="onClickSignUp()">가입신청</button>
+       <button class="cancelBtn" style="border: 0; outline: 0;" onclick="history_back()">취소</button>
+        </div>
 
     </div>
 
 </body>
 <script>
-    var name = document.getElementById("name");
-    var email = document.getElementById("email");
-    var password = document.getElementById("password");
-    var policyAgreement = true;
-    function onClickSignUp(name,email,password,policyAgreement){
-        const res = await fetch('/sign-up',{
+
+    function history_back(){
+        history.back();
+    }
+
+    const onClickSignUp = async() => {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var phoneNumber = document.getElementById("phoneNumber").value;
+        var policyAgreement = true;
+
+        const data = {userName : name,
+                      userEmail : email,
+                      userPassword : password,
+                      policyAgreement : policyAgreement,
+                      phoneNumber : phoneNumber,
+                      }
+
+        console.log(name,email,password);
+        await fetch('/sign-up/',{
         method:"POST",
         headers:{
          "Content-Type":"application/x-www-form-urlencoded",
          },
-         body:JSON.stringify({userName:name,userEmail:email,userPassword:password,
-         policyAgreement:policyAgreement}),
-        }).then(console.log(res));
+         body:JSON.stringify(data),
+        }).then((data) => console.log(data))
+        .catch((e) => {console.log(e)});
     }
 
 </script>

@@ -1,3 +1,15 @@
+body{
+margin: 0;
+}
+
+.wrapper{
+display:flex;
+align-content:flex-center;
+flex-direction: column;
+align-items: center;
+background: #FFFFFF;}
+
+
 .section{
 font-size: 16px;
 font-weight: 500;
@@ -15,11 +27,32 @@ width: 190px;
 height: 32px;
 }
 
+.btn_box{
+width: 500px;
+display:flex;
+align-content:flex-center;
+flex-direction: row;
+align-items: center;
+margin-top: 30px;
+margin-left: 100px;
+}
+.cancelBtn{
+width: 80px;
+margin-left: 30px;
+background: #E8CCC7;
+font-color : #00000;
+}
+.signupBtn{
+margin-left: 140px;
+}
 button{
-position: absolute;
+
+
+
 width: 160px;
 height: 64px;
-left: 100px;
+margin-left:30px;
+
 top: 495px;
 
 background: #DF4629;
