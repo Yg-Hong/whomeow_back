@@ -11,6 +11,12 @@ spring:
     username: admin
     password: dbals3319
     driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+    mode: HTML
+    cache: false #default 는 true, 개발 시에는 false 로 설정
 
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
