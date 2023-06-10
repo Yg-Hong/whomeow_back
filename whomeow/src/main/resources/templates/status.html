@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="../static/status.css" rel="stylesheet"/>
+    <link th:href="@{/status.css}" rel="stylesheet"/>
     <title>Title</title>
 </head>
 <body>
@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<canvas style="z-index:1; margin-top: 200px;" id="doughnut-chart" width="320" height="48"></canvas>
+<canvas style="z-index:1;margin-top: 200px;" id="doughnut-chart" width="320" height="48"></canvas>
 
 </div>
 
