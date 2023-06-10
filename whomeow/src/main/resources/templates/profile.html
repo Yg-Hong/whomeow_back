@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link href="../static/profile.css" rel="stylesheet"/>
+  <link th:href="@{/profile.css}" rel="stylesheet"/>
   <title>반려동물 프로필</title>
   <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
   <script>
@@ -39,14 +39,9 @@
         $("#saveBtn").show();
         $("#editBtn").hide();
         setEdit(false);
-
-
       })
 
       $("#saveBtn").click(function () {
-
-
-
 
 
         $("#editBtn").show();
@@ -73,7 +68,7 @@
     <div class="form">
       <div class="profileHeader"></div>
       <div class="circleImg">
-        <img id="profileImg" src="./dog.jpg"/>
+        <img id="profileImg" th:src="@{/images/dog.jpg}"/>
       </div>
       <div class="hidden">
         <input id="dogKey" hidden=true th:type="text" value="${dogKey}" disabled/>
