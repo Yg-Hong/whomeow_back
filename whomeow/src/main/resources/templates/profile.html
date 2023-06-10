@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="../static/profile.css" rel="stylesheet"/>
+  <title>반려동물 프로필</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      // $.ajax({
+      //   url: "/profile/showProfile",
+      //   type: "GET",
+      //   dataType: "json",
+      //   contentType: "application/json",
+      //   success: function(data) {
+      //     $("#profileName").val(data.dogName);
+      //     $("#profileAge").val(data.dogAge);
+      //     $("#profileSex").val(data.dogSex);
+      //     $("#profileWeight").val(data.dogWeight);
+      //     $("#profileBread").val(data.dogBread);
+      //   }
+      // });
+
+      // var weightPrefix="kg"
+      // var wd
+      // function parseElement(thisone){
+      //   if (thisone.value.charAt(0)=="원")
+      //     return
+      //   wd="w"
+      //   var tempnum=thisone.value
+      //   for (i=0;i<tempnum.length;i++){
+      //     if (tempnum.charAt(i)=="."){
+      //       wd="d"
+      //       break
+      //     }
+      //   }
+
+      $("#editBtn").click(function (){
+        $("#saveBtn").show();
+        $("#editBtn").hide();
+        setEdit(false);
+
+
+      })
+
+      $("#saveBtn").click(function () {
+
+
+
+
+
+        $("#editBtn").show();
+        $("#saveBtn").hide();
+        setEdit(true);
+      })
+
+      function setEdit(flag) {
+        $("#profileName").attr('disabled', flag);
+        $("#profileAge").attr('disabled', flag);
+        $("#profileWeight").attr('disabled', flag);
+        $("#profileSex").attr('disabled', flag);
+        $("#profileBread").attr('disabled', flag);
+      }
+
+
+
+    })
+  </script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="form">
+      <div class="profileHeader"></div>
+      <div class="circleImg">
+        <img id="profileImg" src="./dog.jpg"/>
+      </div>
+      <div class="hidden">
+        <input id="dogKey" hidden=true th:type="text" value="${dogKey}" disabled/>
+      </div>
+      <div class="inputComponent">
+        <label for="profileName">이름</label>
+        <input id="profileName" type="text" value="누리" placeholder="이름" disabled/>
+      </div>
+      <div class="inputComponent">
+        <label for="profileAge">나이</label>
+        <input id="profileAge" type="int" value="5"  placeholder="나이" disabled/>
+      </div>
+      <div class="inputComponent">
+        <label for="profileSex">성별</label>
+        <input id="profileSex" type="String" value="남"  placeholder="성별" disabled/>
+      </div>
+      <div class="inputComponent">
+       <label for="profileWeight">무게</label>
+        <input id="profileWeight" type="text" value="7.6" placeholder="무게" disabled/>
+      </div>
+      <div class="inputComponent">
+        <label id="dogBreadLabel" for="profileBread">종</label>
+        <input id="profileBread" type="text" value="믹스" placeholder="종" disabled/>
+      </div>
+
+      <div class="buttonRow">
+        <button id="editBtn"> edit </button>
+        <button id="saveBtn" hidden> save </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
