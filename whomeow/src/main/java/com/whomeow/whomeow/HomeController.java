@@ -9,14 +9,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
 public class HomeController {
     private final SessionManager sessionManager;
 
-    @GetMapping("/")
-    public String homeLogin(HttpServletRequest request, Model model) {
+    @RequestMapping("/")
+    public String loginHome(HttpServletRequest request, Model model) {
         // request.getSession(false): request.getSession()를 사용하면
         // 기본값이 create : true 이므로, 로그인 하지 않을 사용자도 의미없는 세션이
         //만들어진다. 따라서 세션을 찾아서 사용하는 시점에는 create:false옵션을 사용해
@@ -35,38 +36,26 @@ public class HomeController {
             return "main";
         }
         model.addAttribute("member", loginUser);
-        return "loginHome";
+        return "status";
     }
 
-    @GetMapping("/profile")
-    public String profile(HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession(false);
+    @RequestMapping("/sign-up")
+    public String signUp() {
+        return "sign-up";
+    }
 
-        if(session == null){
-            return "main";
-        }
-
-        User loginUser = (User) session.getAttribute(SessionConst.LOGIN_USER);
-        if(loginUser == null){
-            return "main";
-        }
-
+    @RequestMapping("/profile")
+    public String profile() {
         return "profile";
     }
 
-    @GetMapping("/status")
-    public String status(HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession(false);
-
-        if (session == null) {
-            return "main";
-        }
-
-        User loginUser = (User) session.getAttribute(SessionConst.LOGIN_USER);
-        if (loginUser == null) {
-            return "main";
-        }
-
+    @RequestMapping("/status")
+    public String status() {
         return "status";
+    }
+
+    @RequestMapping("/find")
+    public String find() {
+        return "find";
     }
 }
