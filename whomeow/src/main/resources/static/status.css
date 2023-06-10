@@ -2,6 +2,11 @@ body{
 margin: 0;
 }
 
+a{
+  text-decoration: none;
+  color: white;
+}
+
 span.block{
 margin-top:100px;
 }
@@ -11,7 +16,12 @@ display:flex;
 align-content:flex-center;
 flex-direction: column;
 align-items: center;
-background: #FFFFFF;}
+background: #FFFFFF;
+border-style: solid;
+border-width: 3px;
+padding:30px;
+height:640px;
+}
 
 .box1{
 display:flex;
@@ -27,7 +37,7 @@ font-weight: 500;
 font-size: 16px;
 line-height: 23px;
 
-background: #D9D9D9;
+background: #F5C4C4;
 border: 1px solid #000000;
 }
 
@@ -35,7 +45,18 @@ border: 1px solid #000000;
 width: 160px;
 height: 144px;
 }
-
+.profile_edit{
+width: 100px;
+height: 24px;
+background: #DF4629;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 5px;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+color: #FFFFFF;
+}
 .box2{
 
 position: absolute;
