@@ -26,12 +26,12 @@ public class ProfileInfoController {
         ModelAndView view = new ModelAndView();
 
         Optional<Dog> optionalDog = profileJpaRepository.findByUser(user);
-        if (optionalDog.isEmpty()) {
+        if (optionalDog.isPresent()) {
             view.setViewName("profile");
             view.addObject("editable", false);
 
             Dog dog = profileService.showProfile(user.getUserEmail());
-            view.addObject("profile", dog);
+            view.addObject("dog", dog);
         } else {
             view.setViewName("profile");
             view.addObject("editable", true);
@@ -48,19 +48,20 @@ public class ProfileInfoController {
                     .updatedAt(now)
                     .build();
 
-            view.addObject("profile", dog);
+            view.addObject("dog", dog);
         }
         return view;
     }
 
     @RequestMapping(value = "/editProfile", method = RequestMethod.POST)
     public ModelAndView editProfile(HttpSession session, @RequestBody DogDto dogDto){
+        log.info("컨트롤러 진입 성공");
         User user = (User) session.getAttribute(SessionConst.LOGIN_USER);
         Dog dog = profileService.editProfile(user, dogDto);
 
         ModelAndView view = new ModelAndView();
         view.setViewName("profile");
-        view.addObject("profile", dog);
+        view.addObject("dog", dog);
 
         return view;
     }

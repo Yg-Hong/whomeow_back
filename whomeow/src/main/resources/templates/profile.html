@@ -42,7 +42,33 @@
       })
 
       $("#saveBtn").click(function () {
+        var dogKey = $("#profileKey").val();
+        // var dogPhoto = $("#profilePhoto").val();
+        var dogName = $("#profileName").val();
+        var dogAge = $("#profileAge").val();
+        var dogWeight = $("#profileWeight").val();
+        var dogSex = $("#profileSex").val();
+        var dogBread = $("#profileBread").val();
 
+        var data = {
+          dogKey: dogKey,
+          dogName: dogName,
+          dogAge: dogAge,
+          dogWeight: dogWeight,
+          dogSex:dogSex,
+          dogBread: dogBread
+        }
+
+        $.ajax({
+          url: "/profile/editProfile",
+          type: "POST",
+          dataType: "json",
+          contentType: "application/json",
+          data: JSON.stringify(data),
+          success: function() {
+            console.log("성공");
+          }
+        })
 
         $("#editBtn").show();
         $("#saveBtn").hide();
@@ -56,42 +82,41 @@
         $("#profileSex").attr('disabled', flag);
         $("#profileBread").attr('disabled', flag);
       }
-
-
-
     })
   </script>
 
 </head>
 <body>
   <div class="container">
+    <div class="profileHeader">
+      <button ><a href="/status"> <- Back </a></button>
+    </div>
     <div class="form">
-      <div class="profileHeader"></div>
       <div class="circleImg">
         <img id="profileImg" th:src="@{/images/dog.jpg}"/>
       </div>
       <div class="hidden">
-        <input id="dogKey" hidden=true th:type="text" value="${dogKey}" disabled/>
+        <input id="dogKey" hidden=true type="text" th:value="${dog.dogKey}" disabled/>
       </div>
       <div class="inputComponent">
         <label for="profileName">이름</label>
-        <input id="profileName" type="text" value="누리" placeholder="이름" disabled/>
+        <input id="profileName" type="text" th:value="${dog.dogName}" placeholder="이름" disabled/>
       </div>
       <div class="inputComponent">
         <label for="profileAge">나이</label>
-        <input id="profileAge" type="int" value="5"  placeholder="나이" disabled/>
+        <input id="profileAge" type="int" th:value="${dog.dogAge}"  placeholder="나이" disabled/>
       </div>
       <div class="inputComponent">
         <label for="profileSex">성별</label>
-        <input id="profileSex" type="String" value="남"  placeholder="성별" disabled/>
+        <input id="profileSex" type="String" th:value="${dog.dogSex}"  placeholder="성별" disabled/>
       </div>
       <div class="inputComponent">
        <label for="profileWeight">무게</label>
-        <input id="profileWeight" type="text" value="7.6" placeholder="무게" disabled/>
+        <input id="profileWeight" type="text" th:value="${dog.dogWeight}" placeholder="무게" disabled/>
       </div>
       <div class="inputComponent">
         <label id="dogBreadLabel" for="profileBread">종</label>
-        <input id="profileBread" type="text" value="믹스" placeholder="종" disabled/>
+        <input id="profileBread" type="text" th:value="${dog.dogBread}" placeholder="종" disabled/>
       </div>
 
       <div class="buttonRow">
