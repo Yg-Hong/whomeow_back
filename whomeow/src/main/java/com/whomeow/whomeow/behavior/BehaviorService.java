@@ -19,7 +19,7 @@ public class BehaviorService {
     private final BehaviorJpaRepository behaviorJpaRepository;
     private final ProfileJpaRepository profileJpaRepository;
 
-    HashMap<String, Object> getWeeklyBehavior(User user) {
+    public HashMap<String, Object> getWeeklyBehavior(User user) {
         HashMap<String,Object> map = new HashMap<>();
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -67,5 +67,33 @@ public class BehaviorService {
 
             return map;
         }
+    }
+
+    public HashMap<String, Object> getProfile(User user) {
+        HashMap<String,Object> map = new HashMap<>();
+        Date now = new Date();
+
+        Optional<Dog> dog = profileJpaRepository.findByUser(user);
+        if (dog.isEmpty()) {
+            Dog mockDog = Dog.builder()
+                    .dogPhoto("")
+                    .dogName("")
+                    .dogAge(0)
+                    .dogSex("")
+                    .dogWeight(0L)
+                    .dogBread("")
+                    .user(user)
+                    .createdAt(now)
+                    .updatedAt(now)
+                    .build();
+
+            map.put("dog", mockDog);
+            map.put("dogPresentFlag", false);
+        } else {
+            map.put("dog", dog.get());
+            map.put("dogPresentFlag", true);
+        }
+
+        return map;
     }
 }
