@@ -29,9 +29,11 @@ public class ProfileService {
      * @return
      */
     public Dog editProfile(User user, DogDto dogDto) {
+        log.info("서비스 진입 성공");
         Date now = new Date();
 
         if (profileJpaRepository.findByUser(user).isEmpty()) {
+            log.info("서비스 :::::::::: dog 정보 없을 때");
             Dog dog = Dog.builder()
                     .dogPhoto(dogDto.getDogPhoto())
                     .dogName(dogDto.getDogName())
@@ -46,11 +48,12 @@ public class ProfileService {
             Dog save = profileJpaRepository.save(dogDto.toEntity());
             return save;
         } else {
+            log.info("서비스 :::::::::: dog 정보 있을 때");
             Dog edit = profileJpaRepository.findByUser(user).get();
             edit.update(dogDto.getDogPhoto(), dogDto.getDogName(), dogDto.getDogAge(), dogDto.getDogSex(),
                     dogDto.getDogWeight(), dogDto.getDogBread(), now);
-
-            return edit;
+            Dog save = profileJpaRepository.save(edit);
+            return save;
         }
     }
 }
