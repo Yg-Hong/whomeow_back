@@ -7,9 +7,11 @@
 </head>
 <body>
 <div class="wrapper">
+    <button class="profile_edit" id="signOut"><a href="/">로그아웃</a></button>
 <div class="box1">
     <div class="img_box">
         <img th:src="@{/images/dog.jpg}"/>
+
         <button class="profile_edit"><a href="/profile/showProfile">프로필편집</a></button>
     </div>
     <div class="text_box">
@@ -82,8 +84,18 @@ $.ajax({
       console.log("성공");
   }
 })
+$("#signOut").click(function (){
+$.ajax({
+  url: "/login/sign-out",
+  type: "POST",
+  dataType: "json",
+  contentType: "application/json",
+  success: function(result) {
 
-
+      console.log("성공");
+  }
+})
+})
 // 그냥 마치, 딕셔너리 리스트의 자료구조인 것처럼 접근해서 값을 변경해줘도 문제없습니다.
 myChart.update();
 var frame_duration = 1000;
