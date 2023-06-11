@@ -7,33 +7,6 @@
   <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
   <script>
     $(document).ready(function() {
-      // $.ajax({
-      //   url: "/profile/showProfile",
-      //   type: "GET",
-      //   dataType: "json",
-      //   contentType: "application/json",
-      //   success: function(data) {
-      //     $("#profileName").val(data.dogName);
-      //     $("#profileAge").val(data.dogAge);
-      //     $("#profileSex").val(data.dogSex);
-      //     $("#profileWeight").val(data.dogWeight);
-      //     $("#profileBreed").val(data.dogBreed);
-      //   }
-      // });
-
-      // var weightPrefix="kg"
-      // var wd
-      // function parseElement(thisone){
-      //   if (thisone.value.charAt(0)=="원")
-      //     return
-      //   wd="w"
-      //   var tempnum=thisone.value
-      //   for (i=0;i<tempnum.length;i++){
-      //     if (tempnum.charAt(i)=="."){
-      //       wd="d"
-      //       break
-      //     }
-      //   }
 
       $("#editBtn").click(function (){
         $("#saveBtn").show();
@@ -88,41 +61,42 @@
 </head>
 <body>
   <div class="container">
-    <div class="profileHeader">
-      <button ><a href="/status"> <- Back </a></button>
-    </div>
-    <div class="form">
-      <div class="circleImg">
-        <img id="profileImg" th:src="@{/images/dog.jpg}"/>
-      </div>
-      <div class="hidden">
-        <input id="dogKey" hidden=true type="text" th:value="${dog.dogKey}" disabled/>
-      </div>
-      <div class="inputComponent">
-        <label for="profileName">이름</label>
-        <input id="profileName" type="text" th:value="${dog.dogName}" placeholder="이름" disabled/>
-      </div>
-      <div class="inputComponent">
-        <label for="profileAge">나이</label>
-        <input id="profileAge" type="int" th:value="${dog.dogAge}"  placeholder="나이" disabled/>
-      </div>
-      <div class="inputComponent">
-        <label for="profileSex">성별</label>
-        <input id="profileSex" type="String" th:value="${dog.dogSex}"  placeholder="성별" disabled/>
-      </div>
-      <div class="inputComponent">
-       <label for="profileWeight">무게</label>
-        <input id="profileWeight" type="text" th:value="${dog.dogWeight}" placeholder="무게" disabled/>
-      </div>
-      <div class="inputComponent">
-        <label id="dogBreedLabel" for="profileBreed">종</label>
-        <input id="profileBreed" type="text" th:value="${dog.dogBreed}" placeholder="종" disabled/>
-      </div>
 
-      <div class="buttonRow">
-        <button id="editBtn"> edit </button>
-        <button id="saveBtn" hidden> save </button>
+    <div class="form">
+      <div class="profileHeader">
+        <button id="backBtn"><a href="/status"> <- Back </a></button>
       </div>
+        <div class="circleImg">
+          <img id="profileImg" th:src="@{/images/dog.jpg}"/>
+        </div>
+        <div class="hidden">
+          <input id="dogKey" hidden=true type="text" th:value="${dog.dogKey}" disabled/>
+        </div>
+        <div class="inputComponent">
+          <label for="profileName">이름</label>
+          <input id="profileName" type="text" th:value="${dog.dogName}" placeholder="이름" disabled/>
+        </div>
+        <div class="inputComponent">
+          <label for="profileAge">나이</label>
+          <input id="profileAge" type="int" th:value="${dog.dogAge}"  placeholder="나이" disabled/>
+        </div>
+        <div class="inputComponent">
+          <label for="profileSex">성별</label>
+          <input id="profileSex" type="String" th:value="${dog.dogSex}"  placeholder="성별" disabled/>
+        </div>
+        <div class="inputComponent">
+         <label for="profileWeight">무게</label>
+          <input id="profileWeight" type="text" th:value="${dog.dogWeight}" placeholder="무게" disabled/>
+        </div>
+        <div class="inputComponent">
+          <label id="dogBreedLabel" for="profileBreed">종</label>
+          <input id="profileBreed" type="text" th:value="${dog.dogBreed}" placeholder="종" disabled/>
+        </div>
+
+        <div class="buttonRow">
+          <button id="editBtn"> edit </button>
+          <button id="saveBtn" hidden> save </button>
+        </div>
     </div>
   </div>
 </body>

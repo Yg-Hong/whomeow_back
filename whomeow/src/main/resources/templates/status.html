@@ -35,7 +35,7 @@
     </div>
 </div>
 
-<canvas style="z-index:1;margin-top: 200px;" id="doughnut-chart" width="160" height="72"></canvas>
+<canvas style="z-index:1;margin-top: 250px;" id="doughnut-chart" width="160" height="150"></canvas>
 
 </div>
 
@@ -67,24 +67,6 @@
 });
 
 
-// 그냥 마치, 딕셔너리 리스트의 자료구조인 것처럼 접근해서 값을 변경해줘도 문제없습니다.
-myChart.update();
-var frame_duration = 1000;
-var i=0;
-// d3.interval(
-//     function(){
-//         if (i > 10) {
-//             this.stop();
-//         }
-//         else {
-//             myChart.data.datasets[0].data = [1 + i, 2 + i, 3 + i];
-//             myChart.update(); // 데이터를 바꾼 다음, 이렇게 업데이트를 해야 적용된다.
-//         }
-//         i=i+1;
-//     },
-//     frame_duration
-// );
-
 $.ajax({
   url: "/status/showProfile",
   type: "GET",
@@ -100,6 +82,26 @@ $.ajax({
       console.log("성공");
   }
 })
+
+
+// 그냥 마치, 딕셔너리 리스트의 자료구조인 것처럼 접근해서 값을 변경해줘도 문제없습니다.
+myChart.update();
+var frame_duration = 1000;
+var i=0;
+d3.interval(
+    function(){
+        if (i > 10) {
+            this.stop();
+        }
+        else {
+            myChart.data.datasets[0].data = [1 + i, 2 + i, 3 + i];
+            myChart.update(); // 데이터를 바꾼 다음, 이렇게 업데이트를 해야 적용된다.
+        }
+        i=i+1;
+    },
+    frame_duration
+);
+
 
 /*]]>*/
 </script>
