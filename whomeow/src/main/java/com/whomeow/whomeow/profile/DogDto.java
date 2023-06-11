@@ -20,16 +20,16 @@ public class DogDto {
     private String dogSex;
     private float dogWeight;
 
-    private String dogBread;
+    private String dogBreed;
 
     @Builder
-    public DogDto(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBread) {
+    public DogDto(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBreed) {
         this.dogPhoto = dogPhoto;
         this.dogName = dogName;
         this.dogAge = dogAge;
         this.dogSex = dogSex;
         this.dogWeight = dogWeight;
-        this.dogBread = dogBread;
+        this.dogBreed = dogBreed;
     }
 
     Dog toEntity() {
@@ -39,7 +39,7 @@ public class DogDto {
                 .dogAge(dogAge)
                 .dogSex(dogSex)
                 .dogWeight(dogWeight)
-                .dogBread(dogBread)
+                .dogBreed(dogBreed)
                 .build();
     }
 

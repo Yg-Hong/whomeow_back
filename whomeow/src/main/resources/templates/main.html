@@ -36,7 +36,6 @@
                     userEmail: $("#id").val(),
                     userPassword: $("#password").val()
                 };
-                console.log("이메일,비밀번호",form);
                 $.ajax({
                     url: "/login/sign-in",
                     type: "POST",
@@ -47,6 +46,7 @@
                         console.log(data);
                     },
                     error: function() {
+                        location.href = "http://localhost:8080/status";
                         console.log("error");
                     }
                 })
