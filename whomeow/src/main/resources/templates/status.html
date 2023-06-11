@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link th:href="@{/status.css}" rel="stylesheet"/>
@@ -7,7 +7,10 @@
 </head>
 <body>
 <div class="wrapper">
-<!--    <th:block th:replace="fragments/header :: headerFragment"></th:block>-->
+    <div class="nav">
+        <span>상태일지</span>
+        <button class="sign-out" id="sign-out">로그아웃</button>
+    </div>
 <div class="box1">
     <div class="img_box">
         <img th:src="@{/images/dog.jpg}"/>
@@ -38,14 +41,22 @@
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script th:inline="javascript">
-  /*<![CDATA[*/
+<script>
+ const onClickLogout = async() =>{
+        await fetch('/login/sign-out/',{
+        method:"POST",
+        headers:{
+         "Content-Type":"application/json",
+         },
+         body:{}
+        })
 
+    }
 const onClickProfile = async () => {
     await fetch('/profile/showProfile',{
             method:"GET",
             headers:{
-             "Content-Type":""application/json",
+             "Content-Type":"application/json",
              },
 
             })
@@ -90,6 +101,6 @@ const onClickProfile = async () => {
             frame_duration
         );
 
-/*]]>*/
+document.getElementById("signupBtn").addEventListener("sign-out", onClickLogout);
 </script>
 </html>
