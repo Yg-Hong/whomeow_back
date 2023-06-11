@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <link href="../static/nav.css" rel="stylesheet" />
+  <link th:href="@{/nav.css}" rel="stylesheet" />
 </head>
 <body>
+<div th:fragment="headerFragment">
   <div id="nav">
-    상태일지
+    <span>상태일지</span>
+      <button class="sign-out" onclick="onClickLogout()">로그아웃</button>
   </div>
+</div>
 </body>
 </html>
+<script>
+    const onClickLogout = async() =>{
+        await fetch('/login/sign-out/',{
+        method:"POST",
+        headers:{
+         "Content-Type":"application/json",
+         },
+         body:{}
+        })
+
+    }
+</script>

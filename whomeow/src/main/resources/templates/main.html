@@ -36,6 +36,7 @@
                     userEmail: $("#id").val(),
                     userPassword: $("#password").val()
                 };
+                console.log("이메일,비밀번호",form);
                 $.ajax({
                     url: "/login/sign-in",
                     type: "POST",

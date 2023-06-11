@@ -27,8 +27,8 @@
 <!--            <input type="text" name="phoneNumber" id="phoneNumber" placeholder="010-xxxx-xxxx"></span></div>-->
 <!--    </div>-->
         <div class="btn_box">
-       <button class="signupBtn" style="border: 0; outline: 0;" onclick="onClickSignUp()">가입신청</button>
-       <button class="cancelBtn" style="border: 0; outline: 0;" onclick="history_back()">취소</button>
+       <button class="signupBtn" id="signupBtn" style="border: 0; outline: 0;" >가입신청</button>
+       <button class="cancelBtn" id="cancelBtn" style="border: 0; outline: 0;" >취소</button>
         </div>
 
     </div>
@@ -51,19 +51,22 @@
                       userEmail : email,
                       userPassword : password,
                       policyAgreement : policyAgreement,
+                      phoneNumber : "010-0000-00000",
 
                       }
 
-        console.log(name,email,password);
-        await fetch('/sign-up/',{
+        console.log(data);
+        await fetch('/login/sign-up',{
         method:"POST",
         headers:{
-         "Content-Type":"application/x-www-form-urlencoded",
+         "Content-Type":"application/json",
          },
          body:JSON.stringify(data),
         }).then((data) => console.log(data))
         .catch((e) => {console.log(e)});
     }
+    document.getElementById("signupBtn").addEventListener("click", onClickSignUp);
+    document.getElementById("cancelBtn").addEventListener("click", history_back);
 
 </script>
 </html>

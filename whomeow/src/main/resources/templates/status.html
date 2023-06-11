@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <link th:href="@{/status.css}" rel="stylesheet"/>
@@ -7,26 +7,27 @@
 </head>
 <body>
 <div class="wrapper">
+<!--    <th:block th:replace="fragments/header :: headerFragment"></th:block>-->
 <div class="box1">
     <div class="img_box">
         <img th:src="@{/images/dog.jpg}"/>
-        <button class="profile_edit"><a href="/profile/showProfile">프로필편집</a></button>
+        <button class="profile_edit" onclick="onClickProfile()">프로필편집</button>
     </div>
     <div class="text_box">
     <span class="block">
-        이름 : <span th:text="${name}"></span>
+        이름 : <span th:text="${dogName}"></span>
     </span>
     </br>
     <span class="block">
-        나이/성별 : <span th:text="${age}"></span> <span th:text="${sex}"></span>
+        나이/성별 : <span th:text="${dogAge}"></span> <span th:text="${dogSex}"></span>
     </span>
     </br>
     <span class="block">
-        체중 : <span th:text="${weight}"></span>
+        체중 : <span th:text="${dogWeight}"></span>
     </span>
     </br>
     <span class="block">
-        견종 : <span th:text="${breed}"></span>
+        견종 : <span th:text="${dogBreed}"></span>
     </span>
     </div>
 </div>
@@ -40,6 +41,15 @@
 <script th:inline="javascript">
   /*<![CDATA[*/
 
+const onClickProfile = async () => {
+    await fetch('/profile/showProfile',{
+            method:"GET",
+            headers:{
+             "Content-Type":""application/json",
+             },
+
+            })
+}
 
  const myChart = new Chart(document.getElementById("doughnut-chart"), {
     type: 'doughnut',

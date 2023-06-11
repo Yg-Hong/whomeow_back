@@ -1,5 +1,5 @@
 #nav{
-width: 240px;
+width: 310px;
 height: 56px;
 font-style: normal;
 font-weight: 900;
@@ -8,8 +8,11 @@ line-height: 23px;
 border-style:solid;
 border-width:1px;
 display:flex;
-align-content:flex-center;
-padding:
+
+flex-direction:row;
 
 color: #000000;
+}
+.sign-out{
+margin-left:60px;
 }
