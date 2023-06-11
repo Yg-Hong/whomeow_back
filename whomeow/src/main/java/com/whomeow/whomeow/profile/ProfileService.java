@@ -40,7 +40,7 @@ public class ProfileService {
                     .dogAge(dogDto.getDogAge())
                     .dogSex(dogDto.getDogSex())
                     .dogWeight(dogDto.getDogWeight())
-                    .dogBread(dogDto.getDogBread())
+                    .dogBreed(dogDto.getDogBreed())
                     .user(user)
                     .createdAt(now)
                     .updatedAt(now)
@@ -51,7 +51,7 @@ public class ProfileService {
             log.info("서비스 :::::::::: dog 정보 있을 때");
             Dog edit = profileJpaRepository.findByUser(user).get();
             edit.update(dogDto.getDogPhoto(), dogDto.getDogName(), dogDto.getDogAge(), dogDto.getDogSex(),
-                    dogDto.getDogWeight(), dogDto.getDogBread(), now);
+                    dogDto.getDogWeight(), dogDto.getDogBreed(), now);
             Dog save = profileJpaRepository.save(edit);
             return save;
         }

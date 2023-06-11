@@ -7,30 +7,30 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="nav">
-        <span>상태일지</span>
-        <button class="sign-out" id="sign-out">로그아웃</button>
-    </div>
 <div class="box1">
     <div class="img_box">
         <img th:src="@{/images/dog.jpg}"/>
-        <button class="profile_edit" onclick="onClickProfile()">프로필편집</button>
+        <button class="profile_edit"><a href="/profile/showProfile">프로필편집</a></button>
     </div>
     <div class="text_box">
     <span class="block">
-        이름 : <span th:text="${dogName}"></span>
+        이름 : <span id="dogName" th:text="${dogName}"></span>
     </span>
     </br>
     <span class="block">
-        나이/성별 : <span th:text="${dogAge}"></span> <span th:text="${dogSex}"></span>
+        나이 : <span id="dogAge" th:text="${dogAge}"></span>
     </span>
     </br>
     <span class="block">
-        체중 : <span th:text="${dogWeight}"></span>
+        성별 : <span id="dogSex" th:text="${dogSex}"></span>
     </span>
     </br>
     <span class="block">
-        견종 : <span th:text="${dogBreed}"></span>
+        체중 : <span id="dogWeight" th:text="${dogWeight}"></span>
+    </span>
+    </br>
+    <span class="block">
+        견종 : <span id="dogBreed" th:text="${dogBreed}"></span>
     </span>
     </div>
 </div>
@@ -41,26 +41,10 @@
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script>
- const onClickLogout = async() =>{
-        await fetch('/login/sign-out/',{
-        method:"POST",
-        headers:{
-         "Content-Type":"application/json",
-         },
-         body:{}
-        })
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script th:inline="javascript">
+  /*<![CDATA[*/
 
-    }
-const onClickProfile = async () => {
-    await fetch('/profile/showProfile',{
-            method:"GET",
-            headers:{
-             "Content-Type":"application/json",
-             },
-
-            })
-}
 
  const myChart = new Chart(document.getElementById("doughnut-chart"), {
     type: 'doughnut',
@@ -83,24 +67,40 @@ const onClickProfile = async () => {
 });
 
 
-        // 그냥 마치, 딕셔너리 리스트의 자료구조인 것처럼 접근해서 값을 변경해줘도 문제없습니다.
-        myChart.update();
-        var frame_duration = 1000;
-        var i=0;
-        d3.interval(
-            function(){
-                if (i > 10) {
-                    this.stop();
-                }
-                else {
-                    myChart.data.datasets[0].data = [1 + i, 2 + i, 3 + i];
-                    myChart.update(); // 데이터를 바꾼 다음, 이렇게 업데이트를 해야 적용된다.
-                }
-                i=i+1;
-            },
-            frame_duration
-        );
+// 그냥 마치, 딕셔너리 리스트의 자료구조인 것처럼 접근해서 값을 변경해줘도 문제없습니다.
+myChart.update();
+var frame_duration = 1000;
+var i=0;
+// d3.interval(
+//     function(){
+//         if (i > 10) {
+//             this.stop();
+//         }
+//         else {
+//             myChart.data.datasets[0].data = [1 + i, 2 + i, 3 + i];
+//             myChart.update(); // 데이터를 바꾼 다음, 이렇게 업데이트를 해야 적용된다.
+//         }
+//         i=i+1;
+//     },
+//     frame_duration
+// );
 
-document.getElementById("signupBtn").addEventListener("sign-out", onClickLogout);
+$.ajax({
+  url: "/status/showProfile",
+  type: "GET",
+  dataType: "json",
+  contentType: "application/json",
+  success: function(result) {
+      $("#dogName").text(result.dog.dogName);
+      $("#dogAge").text(result.dog.dogAge);
+      $("#dogWeight").text(result.dog.dogWeight);
+      $("#dogSex").text(result.dog.dogSex);
+      $("#dogBreed").text(result.dog.dogBreed);
+
+      console.log("성공");
+  }
+})
+
+/*]]>*/
 </script>
 </html>

@@ -17,7 +17,7 @@
       //     $("#profileAge").val(data.dogAge);
       //     $("#profileSex").val(data.dogSex);
       //     $("#profileWeight").val(data.dogWeight);
-      //     $("#profileBread").val(data.dogBread);
+      //     $("#profileBreed").val(data.dogBreed);
       //   }
       // });
 
@@ -48,7 +48,7 @@
         var dogAge = $("#profileAge").val();
         var dogWeight = $("#profileWeight").val();
         var dogSex = $("#profileSex").val();
-        var dogBread = $("#profileBread").val();
+        var dogBreed = $("#profileBreed").val();
 
         var data = {
           dogKey: dogKey,
@@ -56,7 +56,7 @@
           dogAge: dogAge,
           dogWeight: dogWeight,
           dogSex:dogSex,
-          dogBread: dogBread
+          dogBreed: dogBreed
         }
 
         $.ajax({
@@ -80,7 +80,7 @@
         $("#profileAge").attr('disabled', flag);
         $("#profileWeight").attr('disabled', flag);
         $("#profileSex").attr('disabled', flag);
-        $("#profileBread").attr('disabled', flag);
+        $("#profileBreed").attr('disabled', flag);
       }
     })
   </script>
@@ -115,8 +115,8 @@
         <input id="profileWeight" type="text" th:value="${dog.dogWeight}" placeholder="무게" disabled/>
       </div>
       <div class="inputComponent">
-        <label id="dogBreadLabel" for="profileBread">종</label>
-        <input id="profileBread" type="text" th:value="${dog.dogBread}" placeholder="종" disabled/>
+        <label id="dogBreedLabel" for="profileBreed">종</label>
+        <input id="profileBreed" type="text" th:value="${dog.dogBreed}" placeholder="종" disabled/>
       </div>
 
       <div class="buttonRow">

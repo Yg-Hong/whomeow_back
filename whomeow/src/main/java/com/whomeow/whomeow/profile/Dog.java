@@ -28,8 +28,8 @@ public class Dog {
     private String dogSex;
     @Column(name = "DOGWEIGHT")
     private float dogWeight;
-    @Column(name = "DOGBREAD")
-    private String dogBread;
+    @Column(name = "DOGBREED")
+    private String dogBreed;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "USERKEY", nullable = false)
@@ -43,25 +43,25 @@ public class Dog {
     private Date updatedAt;
 
     @Builder
-    Dog(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBread, User user, Date createdAt, Date updatedAt) {
+    Dog(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBreed, User user, Date createdAt, Date updatedAt) {
         this.dogPhoto = dogPhoto;
         this.dogName = dogName;
         this.dogAge = dogAge;
         this.dogSex = dogSex;
         this.dogWeight = dogWeight;
-        this.dogBread = dogBread;
+        this.dogBreed = dogBreed;
         this.user = user;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Dog update(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBread, Date updatedAt) {
+    public Dog update(String dogPhoto, String dogName, int dogAge, String dogSex, float dogWeight, String dogBreed, Date updatedAt) {
         this.dogPhoto = dogPhoto;
         this.dogName = dogName;
         this.dogAge = dogAge;
         this.dogSex = dogSex;
         this.dogWeight = dogWeight;
-        this.dogBread = dogBread;
+        this.dogBreed = dogBreed;
         this.updatedAt = updatedAt;
 
         return this;

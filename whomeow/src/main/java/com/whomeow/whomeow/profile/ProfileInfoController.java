@@ -42,7 +42,7 @@ public class ProfileInfoController {
                     .dogAge(0)
                     .dogSex("")
                     .dogWeight(0L)
-                    .dogBread("")
+                    .dogBreed("")
                     .user(user)
                     .createdAt(now)
                     .updatedAt(now)
